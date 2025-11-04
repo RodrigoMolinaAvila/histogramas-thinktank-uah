@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Think Tank Visualizer</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+  <script src="https://unpkg.com/feather-icons"></script>
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+</head>
+<body class="bg-[#E2E2E2] text-[#4A4A4A] overflow-hidden">
+  <div class="h-screen w-full border border-[#9FA6AD] rounded-lg m-1 flex flex-col">
+    <!-- Header (20%) -->
+    <header class="h-[20%] flex items-center justify-between px-8 bg-gradient-to-b from-[#E2E2E2] to-[#9FA6AD] border-b border-[#4A4A4A]">
+      <div class="flex-1">
+        <h1 id="thinkTankName" class="text-4xl font-semibold tracking-wide text-[#000000]">CDC</h1>
+      </div>
+
+      <div class="flex-1 flex justify-center">
+        <!-- Marco para logos (ahora con fondo anaranjado sutil) -->
+        <div class="w-full max-w-md h-24 logo-frame">
+          <img
+            id="thinkTankLogo"
+            src="https://raw.githubusercontent.com/RodrigoMolinaAvila/web_resources/refs/heads/main/webresources/presentacion-coes/cdc.png"
+            alt="Logo"
+            class="w-full h-full object-contain"
+          />
+        </div>
+      </div>
+
+      <div class="flex-1 flex justify-end">
+        <!-- Cápsula de total (fondo anaranjado sutil + fuente más oscura y grande) -->
+        <div id="totalDisplay" class="pill-total">
+          <span class="pill-total__text">Total: 171</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Chart Band (50%) -->
+    <div class="h-[50%] relative bg-gradient-to-b from-[#9FA6AD] to-[#E2E2E2] border-b border-[#9FA6AD] chart-background">
+      <div id="mainChart" class="w-full h-full"></div>
+    </div>
+
+    <!-- Stacked Chart Band (25%) -->
+    <div class="h-[25%] relative bg-gradient-to-b from-[#A8B0B7] to-[#E2E2E2] border-b border-[#9FA6AD] chart-background">
+      <div class="absolute top-2 left-1/2 transform -translate-x-1/2 z-10">
+        <div class="px-4 py-2 bg-[#FFFFFF]/80 rounded-full border border-[#9FA6AD] shadow">
+          <span class="text-sm font-medium text-[#4A4A4A]">Total de publicaciones en el periodo = 17,418</span>
+        </div>
+      </div>
+      <div id="stackedChart" class="w-full h-full"></div>
+    </div>
+
+    <!-- Control Band (5%) -->
+    <div class="h-[5%] flex items-center justify-between px-8 bg-gradient-to-t from-[#9FA6AD] to-[#E2E2E2]">
+      <div class="flex items-center gap-4">
+        <button id="playPauseBtn" class="p-2 bg-[#E2E2E2]/20 rounded-full border border-[#4A4A4A]/40 hover:bg-[#E2E2E2]/40 transition-all">
+          <i data-feather="play" class="w-4 h-4"></i>
+        </button>
+      </div>
+
+      <div class="relative group">
+        <button id="progressBtn" class="px-4 py-2 bg-[#E2E2E2]/30 rounded-full border border-[#9FA6AD] hover:bg-[#E2E2E2]/50 transition-all">
+          <span id="progressText" class="text-[#4A4A4A]">1/24</span>
+        </button>
+        <div id="thinkTankMenu" class="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 w-64 max-h-96 overflow-y-auto bg-[#FFFFFF] border border-[#9FA6AD] rounded-lg shadow opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+          <!-- Items dinámicos -->
+        </div>
+      </div>
+
+      <div class="flex items-center gap-4">
+        <button id="prevBtn" class="p-2 bg-[#E2E2E2]/20 rounded-full border border-[#4A4A4A]/40 hover:bg-[#E2E2E2]/40 transition-all">
+          <i data-feather="chevron-left" class="w-4 h-4"></i>
+        </button>
+        <button id="nextBtn" class="p-2 bg-[#E2E2E2]/20 rounded-full border border-[#4A4A4A]/40 hover:bg-[#E2E2E2]/40 transition-all">
+          <i data-feather="chevron-right" class="w-4 h-4"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+  <script>feather.replace();</script>
+</body>
+</html>
