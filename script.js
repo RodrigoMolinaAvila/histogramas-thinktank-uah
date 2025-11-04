@@ -4762,6 +4762,7 @@ const colorPalette = [
 // Historical events
 const historicalEvents = [
     { date: '2019-10', label: 'Estallido Social' },
+    { date: '2020-10', label: 'Plebiscito de entrada CC' },
     { date: '2022-09', label: 'Plebiscito de salida CC' },
     { date: '2023-12', label: 'Plebiscito salida PC' },
     { date: '2021-07', label: 'Inicio CC' }
@@ -4955,7 +4956,7 @@ function drawMainChart(thinkTank, color) {
         .attr('y', d => y(d.n) - 10)
         .attr('text-anchor', 'middle')
         .attr('fill', '#111')
-        .attr('font-size', '12px')
+        .attr('font-size', '15px')
         .attr('font-weight', '500')
         .text(d => d.n)
         .attr('opacity', 10);
